@@ -1,24 +1,25 @@
 {
-	"name": "yelp-scraper",
-	"version": "1.0.0",
-	"description": "Yelp Scraper on Apify",
-	"dependencies": {
-		"apify": "^2.1.0",
-		"cheerio": "^1.0.0-rc.12",
-		"lodash": "^4.17.21",
-		"parse-domain": "^4.1.0"
-	},
-	"devDependencies": {
-		"@apify/eslint-config": "^0.2.2",
-		"@types/lodash": "^4.14.177",
-		"eslint": "^7.32.0"
-	},
-	"scripts": {
-		"start": "node src/main.js",
-		"lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx",
-		"lint:fix": "./node_modules/.bin/eslint ./src --ext .js,.jsx --fix",
-		"test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
-	},
-	"author": "It's not you it's me",
-	"license": "ISC"
+    "name": "yelp-scraper",
+    "version": "1.0.0",
+    "description": "Yelp Scraper on Apify",
+    "dependencies": {
+        "apify": "^2.1.0",
+        "cheerio": "^1.0.0-rc.12",
+        "lodash": "^4.17.21",
+        "parse-domain": "^4.1.0",
+        "@apify/fingerprint": "^1.0.0"
+    },
+    "devDependencies": {
+        "@apify/eslint-config": "^0.2.2",
+        "@types/lodash": "^4.14.177",
+        "eslint": "^7.32.0"
+    },
+    "scripts": {
+        "start": "node src/main.js",
+        "lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx",
+        "lint:fix": "./node_modules/.bin/eslint ./src --ext .js,.jsx --fix",
+        "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
+    },
+    "author": "It's not you it's me",
+    "license": "ISC"
 }
