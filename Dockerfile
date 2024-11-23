@@ -1,21 +1,29 @@
+# Use Apify's base image with Node.js 16
 FROM apify/actor-node:16
 
-# Second, copy just package.json and package-lock.json since they are the only files
-# that affect NPM install in the next step
+# Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-# Install NPM packages, skip optional and development dependencies to keep the
-# image small. Avoid logging too much and print the dependency tree for debugging
+# Install production dependencies
 RUN npm --quiet set progress=false \
- && npm install --only=prod --no-optional \
- && echo "Installed NPM packages:" \
- && (npm list --all || true) \
- && echo "Node.js version:" \
- && node --version \
- && echo "NPM version:" \
- && npm --version
+    && npm install --only=prod --no-optional \
+    && echo "Installed NPM packages:" \
+    && (npm list --all || true) \
+    && echo "Node.js version:" \
+    && node --version \
+    && echo "NPM version:" \
+    && npm --version
 
+# Copy the rest of the files
 COPY . ./
 
+# Disable outdated warnings
 ENV APIFY_DISABLE_OUTDATED_WARNING 1
 ENV npm_config_loglevel=silent
+
+# Set default memory and headless mode
+ENV APIFY_MEMORY_MBYTES=2048
+ENV APIFY_HEADLESS=1
+
+# Start the Actor
+CMD ["npm", "start"]
